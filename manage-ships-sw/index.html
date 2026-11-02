@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>manage-ships-sw</title>
+    <style>
+      body {
+        isolation: isolate;
+      }
+
+      body::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        background-image:
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 240' preserveAspectRatio='none'%3E%3Cpath fill='%231c2b30' d='M0 150 120 125 205 152 355 65 470 132 610 108 750 162 925 82 1060 140 1190 98 1330 150 1440 119V240H0Z'/%3E%3Cpath fill='%23374950' fill-opacity='.5' d='m205 152 150-87 115 67-102-35-32 19-16-9Zm545 10 175-80 135 58-126-31-34 22-18-8Z'/%3E%3Cpath fill='%23172227' d='m0 188 165-24 170 37 200-47 240 48 185-38 180 33 175-40 125 30v53H0Z'/%3E%3C/svg%3E"),
+          url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='640' height='480' viewBox='0 0 640 480'%3E%3Cg fill='%23c4dee4' fill-opacity='.28'%3E%3Ccircle cx='37' cy='53' r='.8'/%3E%3Ccircle cx='128' cy='185' r='.6'/%3E%3Ccircle cx='214' cy='81' r='1'/%3E%3Ccircle cx='306' cy='273' r='.7'/%3E%3Ccircle cx='398' cy='41' r='.6'/%3E%3Ccircle cx='482' cy='161' r='.9'/%3E%3Ccircle cx='597' cy='92' r='.7'/%3E%3Ccircle cx='61' cy='354' r='.6'/%3E%3Ccircle cx='189' cy='426' r='.9'/%3E%3Ccircle cx='371' cy='391' r='.6'/%3E%3Ccircle cx='548' cy='332' r='.8'/%3E%3Ccircle cx='618' cy='453' r='.6'/%3E%3C/g%3E%3C/svg%3E");
+        background-position: center bottom, center top;
+        background-size: 100% 24vh, 640px 480px;
+        background-repeat: no-repeat, repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
