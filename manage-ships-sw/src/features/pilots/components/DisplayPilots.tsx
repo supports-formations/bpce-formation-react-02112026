@@ -7,6 +7,8 @@ export type DisplayPilotsProps = {
 }
 
 const DisplayPilots = ({items}: DisplayPilotsProps) => {
+    console.info('DisplayPilots');
+
     const trs = items.map(pilot => <OneRowPilot key={pilot.id} item={pilot} />);
     const withPilots = items && items.length > 0;
     const table = <table><tbody>{trs}</tbody></table>

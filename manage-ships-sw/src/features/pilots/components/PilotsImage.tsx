@@ -6,6 +6,8 @@ export type PilotsImageProps = {
 }
 
 const PilotsImage = (props: PilotsImageProps) => {
+    console.info('PilotsImage');
+
     const value = props.pilots ? props.pilots.length : 0;
 
     return (
