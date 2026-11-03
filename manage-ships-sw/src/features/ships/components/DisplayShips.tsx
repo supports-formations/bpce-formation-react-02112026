@@ -1,5 +1,7 @@
-import type { Ships } from '../models';
+
+import { ships } from '../__mocks__/ships';
 import styles from './DisplayShips.module.css';
+import OneRowShip from './OneRowShip';
 
 const clickToFilter = () => {
     console.info('goToFilter');
@@ -7,18 +9,24 @@ const clickToFilter = () => {
 
 const title = 'Liste des vaisseaux';
 
-const ships: Ships = [{id: 1, matricule: 'XDFF', size: 300},{id: 1, matricule: 'XDFF', size: 300},];
 
-const rows = ships.map(item => <tr><td>{item.id}</td><td>{item.matricule}</td><td>{item.size}</td></tr>)
+const rows = ships.map(ship => <OneRowShip key={ship.id} item={ship} />)
+
 
 const DisplayShips = () => {
     console.info('DisplayShips');   
+    const displayH1 = false;
     
+    const titleH1 = <h1 className={styles.title}>{title}</h1>
+
+    const style = {
+        display: 'block'
+    }
 
     return (
         <>
-           <h1 className={styles.title}>{title}</h1>
-           <button className={styles.filter} onClick={clickToFilter}>Filtrer</button>
+           { displayH1 && titleH1 }
+           <button style={style} className={styles.filter} onClick={clickToFilter}>Filtrer</button>
 
            <table className={styles.table}>
             <thead>
