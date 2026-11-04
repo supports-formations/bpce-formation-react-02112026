@@ -1,4 +1,3 @@
-import PilotsPage from "./features/pilots/pages/PilotsPage";
 
 function AppBis() {
     console.info('App bis')
@@ -6,7 +5,7 @@ function AppBis() {
         <>
             <h1>Gestion de mes vaisseaux</h1>
             {/* <DisplayShips /> */}
-            <PilotsPage />
+            {/* <PilotsPage /> */}
         </>
     )
 } // renvoie toujours la même chose : fonction pure / déterministe
