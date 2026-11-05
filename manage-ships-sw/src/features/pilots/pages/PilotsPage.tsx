@@ -1,17 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DisplayPilots from "../components/DisplayPilots";
 import FiltersPilots from "../components/filters/FiltersPilots";
 import ManageDisplayImage from "../components/ManageDisplayImage";
+import type { PilotList } from "../models";
 import { getListPilots } from "../services/get-list-pilots";
 
 
 
 const PilotsPage = () => {    
     //const pilots = getListPilots();
-    const [pilots] = useState(() => getListPilots())
+    const [pilots, setPilots] = useState<PilotList | undefined>(undefined)
     const [planetId, setPlanetId] = useState(0)
 
-    const pilotsComputed = planetId > 0 ? pilots.filter(item => item.planet.id == planetId) : pilots;
+    const pilotsComputed = planetId > 0 ? pilots?.filter(item => item.planet.id == planetId) : pilots;
+
+    useEffect(() => {
+        getListPilots(planetId).then(items => setPilots(items))
+    }, [planetId])
 
     console.info('PilotsPage 1.');
 
