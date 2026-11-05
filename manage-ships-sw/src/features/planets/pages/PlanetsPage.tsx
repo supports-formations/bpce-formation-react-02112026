@@ -11,7 +11,7 @@ export const PlanetsPage = () => {
 
          //setPlanets([{id: 1, label: 'tatooine'}])
          setTimeout(() => {
-            resolve([{id: 1, label: 'tatooine'}])
+             resolve([{id: 1, label: 'tatooine'}]) // MICRO TASK
          }, 1500);
 
 
@@ -22,15 +22,29 @@ export const PlanetsPage = () => {
 
     console.info('PRE PlanetsPage')
     
+    
+    useEffect(() => {
+        //  const prom = myPromise()
 
-     useEffect(() => {
-        myPromise().then(items => setPlanets(items))
+        //  prom.then(items => {
+        //         setPlanets(items)
+        //         return items;
+        //     })
+
+        // prom.then(result => console.info(result))
+
+        async function executeCallApi() {
+            const items = await myPromise();
+
+            setPlanets(items);
+        }
+        executeCallApi();
     //     console.info('effect')
 
         // setTimeout(() => {
         //     setPlanets([{id: 1, label: 'tatooine'}])
         // }, 1000);
-    }, [])
+    })
 
     console.info('POST PlanetsPage')
 
