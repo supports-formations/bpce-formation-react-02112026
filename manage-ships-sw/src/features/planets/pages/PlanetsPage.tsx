@@ -11,7 +11,7 @@ export const PlanetsPage = () => {
 
          //setPlanets([{id: 1, label: 'tatooine'}])
          setTimeout(() => {
-             resolve([{id: 1, label: 'tatooine'}]) // MICRO TASK
+             resolve([{id: 1, name: 'tatooine'}]) // MICRO TASK
          }, 1500);
 
 
@@ -24,26 +24,14 @@ export const PlanetsPage = () => {
     
     
     useEffect(() => {
-        //  const prom = myPromise()
-
-        //  prom.then(items => {
-        //         setPlanets(items)
-        //         return items;
-        //     })
-
-        // prom.then(result => console.info(result))
-
         async function executeCallApi() {
-            const items = await myPromise();
+            //const items = await myPromise();
+            const response = await fetch('https://swapi.info/api/planets')
+            const items = await response.json()
 
             setPlanets(items);
         }
         executeCallApi();
-    //     console.info('effect')
-
-        // setTimeout(() => {
-        //     setPlanets([{id: 1, label: 'tatooine'}])
-        // }, 1000);
     })
 
     console.info('POST PlanetsPage')
@@ -52,7 +40,7 @@ export const PlanetsPage = () => {
         <>
 
             {!planets && <Spinner animation="grow" />}
-            {planets && <table>{planets.map(item => <tr><td>{item.label}</td></tr>)}</table>}
+            {planets && <table><tbody>{planets.map(item => <tr><td>{item.name}</td></tr>)}</tbody></table>}
         </>
     )
 }

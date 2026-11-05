@@ -6,7 +6,7 @@ export type SelectPlanetsProps = {
 } & FilterPlanetByIdProps
 
 const SelectsPlanets = ({items, filterByPlanetId: filterById}: SelectPlanetsProps) => {
-    const options = items.map(item => <option value={item.id} key={item.id}>{item.label}</option>)
+    const options = items.map(item => <option value={item.id} key={item.id}>{item.name}</option>)
 
     const selectPlanetId = (e: React.ChangeEvent<HTMLSelectElement, HTMLSelectElement>) => {
         const id =  +e.target.value;
