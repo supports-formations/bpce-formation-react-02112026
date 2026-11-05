@@ -1,4 +1,4 @@
-import { useState, type ChangeEvent } from "react";
+import { useRef, useState, type ChangeEvent } from "react";
 import { Button, Form } from "react-bootstrap";
 import type { Ship } from "../models";
 
@@ -18,6 +18,9 @@ export type AddShipProps = {
 } 
 
 const AddShip = ({saveNewShip}: AddShipProps) => {
+    let counter = 0;
+    const inputRef = useRef<HTMLInputElement>(null);
+    const internalCounter = useRef<number>(0);
     const [formState, setFormState] = useState<AddShipForm>({matricule: {value: ''}, size: {value: 0}, valid: false})
 
     const handleSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
@@ -27,12 +30,17 @@ const AddShip = ({saveNewShip}: AddShipProps) => {
         e.stopPropagation();
 
         if(formState.valid) {
+            internalCounter.current = internalCounter.current + 1;
+            counter ++;
             saveNewShip({
                 id: 0,
                 matricule: formState.matricule.value,
                 size: formState.size.value
             });
-        }    
+        } else {
+            inputRef.current?.focus()
+        }   
+        
     };
 
   const changeValueMatricule = (e: ChangeEvent<HTMLInputElement>) => {
@@ -45,6 +53,8 @@ const AddShip = ({saveNewShip}: AddShipProps) => {
 
     return (
         <>
+        <i>Vous avez cliqué trop de fois (rappel : {internalCounter.current})</i>
+
          <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                 <Form.Label>Matricule</Form.Label>
@@ -52,7 +62,7 @@ const AddShip = ({saveNewShip}: AddShipProps) => {
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>Taille</Form.Label>
-                <Form.Control type="number" value={formState.size.value} />
+                <Form.Control ref={inputRef} type="number" value={formState.size.value} />
             </Form.Group>
             </Form>
 

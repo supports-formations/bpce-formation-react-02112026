@@ -1,16 +1,23 @@
-import { PlanetsPage } from "./features/planets/pages/PlanetsPage";
-import MainLayout from "./shared/layouts/MainLayout";
+import { useContext } from "react";
+import { ThemeContext } from "./shared/components/contexts/models/theme-context";
 
 function AppBis() {
-    console.info('App bis')
-    return (
-        <>
-                <h1>Gestion de mes vaisseaux</h1>
-                {/* <DisplayShips /> */}
-                {/* <PilotsPage /> */}
-                <PlanetsPage />
-        </>
-    )
+  console.info("App bis");
+  const context = useContext(ThemeContext);
+
+  const style = {
+    backgroundColor: context?.current == 'dark' ? 'black': 'white'
+  }
+
+  return (
+    <>
+      <div style={style}>
+        <h1>Bienvenue</h1>
+        {/* <DisplayShips /> */}
+        {/* <PilotsPage /> */}
+      </div>
+    </>
+  );
 } // renvoie toujours la même chose : fonction pure / déterministe
 
 export default AppBis;
